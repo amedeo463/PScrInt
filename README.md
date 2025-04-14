@@ -9,7 +9,7 @@ These conditions may be applied to this software and, recursively, all of its fo
 
 # FAQ
 ## What is PinsaScript?
-PinsaScript is a scripting language made to download files, extract .zip archives and manage files.
+PinsaScript is a scripting language made extract .zip archives, download files and manage them.
 It has a similar style to BASIC.
 
 ## What is PScrInt?
