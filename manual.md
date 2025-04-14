@@ -78,7 +78,7 @@ The syntax is the same as ATTRSEL:
 For example, if we type
 <pre>1, 3</pre>
 In the input, then attrA and attrC will be gained.
-### 4.4: Go back Action
+## 5: Go back Action
 If a non-valid input is given to ATTRSEL or ATTRMSEL, they will return a status code of -3, called "Go back Action with error".
 This status code makes the interpreter go backward in the lines of the script as long as it keeps finding LOG instructions.
 There is also a normal "Go back action" that returns no error, but it's currently unused by PScrInt.
