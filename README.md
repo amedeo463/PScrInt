@@ -9,7 +9,7 @@ These conditions may be applied to this software and, recursively, all of its fo
 
 # How do I run this?
 Instructions depend on your platform. Precise instructions will be added in the future.
-You will need [Python](https://www.python.org) (on linux, available in APT as 'python3') and the *requests* package (also on linux, available in APT as 'python3-requests') to run this program.
+You will need [Python](https://www.python.org) (available in APT as 'python3' if you're running debian-based linux distros) and the *requests* package (available in APT as 'python3-requests' if running debian-based linux distros, also available in PIP) to run this program.
 
 # FAQ
 ## What is PinsaScript?
