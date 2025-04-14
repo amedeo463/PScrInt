@@ -20,7 +20,7 @@ It has a similar style to BASIC.
 PScrInt is THE interpreter for PinsaScript, allowing to run scripts made in such language.
 
 ## Where do I learn PinsaScript?
-I'm working on a manual for it, available soon (tm).
+I have a *very* Work In Progress manual, please check the 'manual.md' file in this repo to consult it.
 
 
 ###### amedeo463, 2025
