@@ -46,12 +46,12 @@ Howerver, because limitations of the language, you cannot put a comment after an
 as the comment itself would be considered part of the instrucion.
 Here's an example:
 <pre>
-# don't do this:
-log otherwise, the comment # Will get printed out too!
+# Do this,
+log and not # this!
 </pre>
 OUTPUT:
 <pre>
-LOG: otherwise, the comment # Will get printed out too!
+LOG: and not # this!
 </pre>
 
 ## 4: TBA
