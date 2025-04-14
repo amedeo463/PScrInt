@@ -5,7 +5,7 @@ The official PinsaScript Interpreter.
 This software comes with **ABSOLUTELY NO WARRANTY**.
 YOU are responsible for ANY DAMAGE done with this software.
 You may share this software and modify it to your liking, but you shall give me credit.
-These conditions may be applied to this software and, recursively, all of its forks.
+These conditions may be applied to this software and, recursively, any modified version of it.
 
 # How do I run this?
 Instructions depend on your platform. Precise instructions will be added in the future.
