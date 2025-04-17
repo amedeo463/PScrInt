@@ -11,12 +11,15 @@ from zipfile import ZipFile
 from sys import exception
 
 # Allows to use different paths without editing any script manually.
-
 # Also, these are not constants, don't get fooled.
 # Changed these from constants to normal variables when it was too late.
+# Oh yeah have I mentioned that scripts on the web are supported?
 SD_CARD = "[UNSET]" # SD card
 WORKDIR = "./temp/" # Work directory (temp directory)
-SPATH = "[UNSET]" # Path to the script to run.
+SPATH = "[UNSET]" # Path or URL to the script to run.
+
+ISURL = False # Is the script to run an URL?
+
 
 attributes = set()
 # instruction that translates paths.
@@ -41,6 +44,9 @@ class instr:
 
     def copy(fname: str, dest: str) -> None: # copy a file and paste it somewhere else.
         print("Copying", fname, "to", dest)
+        
+        # Below how I used to implement the copy function before
+        # Releasing the project to the public.
         #open(dest, "wb").write(open(fname, "rb").read())
         #[ COPY DATA TO DEST  ] [ READ FILE DATA       ]
         copy2(fname, dest)
@@ -200,12 +206,26 @@ def run_instr(instr_: str):
     return 0
 
 def runScript(): # Read, prepare and run the whole script.
-    print("Reading script...")
-    try:
-        scriptlines = open(SPATH, "r").readlines()
-    except:
-        print("Error: Script not found!")
-        return None
+    if ISURL:
+        try:
+            #BUG: Thing don't work. probably have to ask for the text
+            #     Instead of the binary content (bytes obj)
+            # Downloads the script from the web, checks conetnts and
+            # Puts the result in the 'scriptlines' variable.
+            print("Still have to fix a thing about this.\nGoodbye.")
+            quit()
+            scriptlines = instr.download(SPATH).content.split("\n")
+            
+        except:
+            print("Error: Unable to gather the script from the given URL!")
+            return None
+    else:
+        print("Reading script...")
+        try:
+            scriptlines = open(SPATH, "r").readlines()
+        except:
+            print("Error: Script not found!")
+            return None
     
     try:
         instr.newdir(WORKDIR)
@@ -296,8 +316,10 @@ Welcome to the PScrInt!
     chosen = input("You may choose one, then you may hit [RETURN] to confirm:\n? >").strip().upper() # the '.strip().upper()' makes everything more user-friendly
 
     if chosen == "0":
-        SPATH_ = input("\nPlease obtain the full path to the script and paste it here.\nOr, if your system allows it, you can simply drag it and drop it here.\nPlease remember to remove quotes if there are any.\nAfter that, press [RETURN].\nLeave the prompt empty to leave the current selection unchanged.\n\nSCRIPT >").strip()
+        SPATH_ = input("\nPlease obtain the full path to the script and paste it here.\nOr, if your system allows it, you can simply drag it and drop it here.\nPlease remember to remove quotes if there are any.\n!! You can also use a URL pointing to the script ou want to use.\n   But make sure to use the full URL!\n   So, use something like:\n   https://www.startpage.com\n   instead of:\n   startpage.com\nAfter that, press [RETURN].\nLeave the prompt empty to leave the current selection unchanged.\n\nSCRIPT >").strip()
         if SPATH_ != "":
+            if SPATH_.startswith("https://") or SPATH_.startswith("http://"):
+                ISURL = instr.yninput(f"URL detected. Is:\n{SPATH_}\nAn URL? (y/n)  ")
             SPATH = SPATH_
         del SPATH_
 
