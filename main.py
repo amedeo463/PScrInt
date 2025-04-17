@@ -1,3 +1,5 @@
+# Line below is for something in the future, DO NOT DELETE
+## LIBSTART ##
 # Import every individual needed instruction
 # for the sake of performance, and to save
 # some memory in case you have a potato
@@ -267,7 +269,8 @@ def runScript(): # Read, prepare and run the whole script.
     
     print("# SCRIPT EXECUTION ENDED #")
     instr.pause()
-    
+## LIBEND ##
+# Same as LIBSTART. Again, DO NOT DELETE
 
 
 # The main loop.
