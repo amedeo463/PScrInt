@@ -10,7 +10,6 @@ from requests import get
 from zipfile import ZipFile
 from sys import exception
 
-# Custom paths are not only supported, but mandatory.
 # Allows to use different paths without editing any script manually.
 
 # Also, these are not constants, don't get fooled.
