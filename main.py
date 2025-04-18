@@ -197,7 +197,23 @@ def run_instr(instr_: str):
                         attributes.add(args[temp0])
             except:
                 return -3
-
+        
+        elif inst_name == "ADDATTR":
+            for i in args:
+                attributes.add(i)
+        
+        elif inst_name == "REMATTR":
+            for i in args:
+                try:
+                    attributes.remove(i)
+                except: pass
+        
+        elif inst_name == "STOP":
+            return -5
+        
+        elif inst_name == "ESTOP":
+            return -4
+        
         elif inst_name == "NOTHING":
             pass
 
@@ -263,10 +279,11 @@ def runScript(): # Read, prepare and run the whole script.
                 break # ...And stop execution.
             if result != 0: # Check errors that are not exceptions
                 errorlist = {
-                    -1: "Unknown command name"
+                    -1: "Unknown command name",
+                    -4: "Script stopped itself"
                 }
                 if result in errorlist.keys():
-                    print(f"Error on line {i+1}: {errorlist}")
+                    print(f"Error on line {i+1}: {errorlist[result]}")
                     break
                 
                 elif result == -3 or result == -2:
@@ -275,6 +292,10 @@ def runScript(): # Read, prepare and run the whole script.
                         i -= 1
                     if result == -3:
                         instr.tryagainflag = True
+
+                elif result == "-5":
+                    break
+
                 else:
                     print(f"Error on line {i+1}: An unknown error occoured ({result})")
                     break
