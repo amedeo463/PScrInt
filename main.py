@@ -208,14 +208,8 @@ def run_instr(instr_: str):
 def runScript(): # Read, prepare and run the whole script.
     if ISURL:
         try:
-            #BUG: Thing don't work. probably have to ask for the text
-            #     Instead of the binary content (bytes obj)
-            # Downloads the script from the web, checks conetnts and
-            # Puts the result in the 'scriptlines' variable.
-            print("Still have to fix a thing about this.\nGoodbye.")
-            quit()
-            scriptlines = instr.download(SPATH).content.split("\n")
-            
+            print("Downloading script...")
+            scriptlines = get(SPATH).text.split("\n")
         except:
             print("Error: Unable to gather the script from the given URL!")
             return None
