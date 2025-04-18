@@ -1,3 +1,5 @@
+THIS PROJECT HAS BEEN DISCONTINUED.
+Check [PinsaLib](https://github.com/amedeo463/PinsaLib) instead.
 # PScrInt
 The official PinsaScript Interpreter.
 
