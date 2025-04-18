@@ -2,7 +2,17 @@
 A manual to learn PinsaScript.
 
 ## Table of contents
-TBA
+1. What is PinsaScript?
+2. Making a 'Hello, World' program
+    1. With LOG instruction
+    2. With NOTICE instruction
+3. Commenting
+4. Attributes
+   1. Using ATTRYN
+   2. Using ATTRSEL
+   3. Using ATTRMSEL
+5. Go back Action
+6. Sections
 
 ## 1: What is PinsaScript?
 PinsaScript is a scripting language made to automatically manage files without having to do every operation manually.
@@ -57,7 +67,7 @@ LOG: and not # this!
 ## 4: Attributes
 Attributes are strings that saved in memory that represent choices made by the user, and unlike instruction names,
 attributes *ARE case sensitive*.
-Attributes are used to run the contents of sections, which can be entered by possessing the right attributes.
+They are used to run the contents of sections, which can be entered by possessing the right attributes.
 There are plenty of instructions dedicated to gain attributes. They are: ATTRYN, ATTRSEL and ATTRMSEL.
 ### 4.1: Using ATTRYN
 ATTRYN is an instruction that asks the user if it wants to gain a specific set of attributes,
@@ -78,10 +88,27 @@ The syntax is the same as ATTRSEL:
 For example, if we type
 <pre>1, 3</pre>
 In the input, then attrA and attrC will be gained.
+
 ## 5: Go back Action
 If a non-valid input is given to ATTRSEL or ATTRMSEL, they will return a status code of -3, called "Go back Action with error".
 This status code makes the interpreter go backward in the lines of the script as long as it keeps finding LOG instructions.
-There is also a normal "Go back action" that returns no error, but it's currently unused by PScrInt.
+There is also a normal "Go back action" that returns no error (-2), but it's currently unused by PScrInt.
+
+## 6: Sections
+Sections are chunks of code that will be executed only if you have the right attribute for it.
+A section looks something like this:
+<pre>
+section attr
+  # Put some code here
+  log you have the right attribute!
+endsection
+</pre>
+in this example, 'attr' is the attribute needed to run the section.
+If we have that attribute, the output will be:
+<pre>
+LOG: you have the right attribute!
+</pre>
+If we don't have that attribute, there will be no output, since in such a situation the contents of the section will be completely ignored.
 
 
 {TO FINISH}
